@@ -2,7 +2,7 @@
 var app = require('ampersand-app');
 var PageView = require('./base');
 //var templates = require('../templates');
-var templates = require('jade!../../templates/pages/personEdit.jade');
+var templates = require('../../templates/pages/personEdit.jade');
 var PersonForm = require('../forms/person');
 
 

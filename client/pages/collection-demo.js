@@ -1,6 +1,6 @@
 var PageView = require('./base');
 //var templates = require('../templates');
-var templates = require('jade!../../templates/pages/collectionDemo.jade');
+var templates = require('../../templates/pages/collectionDemo.jade');
 var PersonView = require('../views/person');
 
 

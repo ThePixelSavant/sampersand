@@ -40,6 +40,7 @@
     "gulp-util": "^3.0.7",
     "handlebars": "^4.0.5",
     "handlebars-loader": "^1.1.4",
+    "image-webpack-loader": "^1.6.3",
     "jade": "^1.11.0",
     "jade-html-loader": "0.0.3",
     "jade-loader": "^0.8.0",

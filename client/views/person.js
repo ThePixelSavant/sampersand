@@ -1,6 +1,6 @@
 var View = require('ampersand-view');
 //var templates = require('../templates');
-var templates = require('jade!../../templates/includes/person.jade');
+var templates = require('../../templates/includes/person.jade');
 
 
 module.exports = View.extend({
