@@ -3,6 +3,7 @@ var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
 var CollectionDemo = require('./pages/collection-demo');
 var InfoPage = require('./pages/info');
+var d3Page = require('./pages/d3');
 var PersonAddPage = require('./pages/person-add');
 var PersonEditPage = require('./pages/person-edit');
 var PersonShowPage = require('./pages/person-show');
@@ -13,6 +14,7 @@ module.exports = Router.extend({
         '': 'home',
         'collections': 'collectionDemo',
         'info': 'info',
+        'd3': 'd3',
         'person/add': 'personAdd',
         'person/:id': 'personView',
         'person/:id/edit': 'personEdit',
@@ -35,6 +37,12 @@ module.exports = Router.extend({
 
     info: function () {
         app.trigger('page', new InfoPage({
+            model: app.me
+        }));
+    },
+    
+    d3: function () {
+        app.trigger('page', new d3Page({
             model: app.me
         }));
     },
