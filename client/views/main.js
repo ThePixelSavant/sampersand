@@ -9,10 +9,13 @@ var _ = require('lodash');
 var domify = require('domify');
 var localLinks = require('local-links');
 //var templates = require('../templates');
-var templates = require('../../templates/body.jade');
+var templates = require('../../templates/body.hbs');
 var headTemplate = require('../../templates/head.jade');
+
+var bsn = require('bootstrap.native');
+
 require('../../stylesheets/app.styl');
-require('../../stylesheets/bootstrap.css');
+//require('../../stylesheets/bootstrap.css');
 require('../../stylesheets/d3.css');
 
 module.exports = View.extend({
@@ -27,10 +30,8 @@ module.exports = View.extend({
     },
     render: function () {
         // some additional stuff we want to add to the document head
-        
-        console.log(headTemplate);
-        
-        //document.head.appendChild(domify(headTemplate));
+                
+        document.head.appendChild(domify(headTemplate()));
 
         // main renderer
         this.renderWithTemplate(this);
