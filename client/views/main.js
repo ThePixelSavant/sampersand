@@ -8,14 +8,12 @@ var ViewSwitcher = require('ampersand-view-switcher');
 var _ = require('lodash');
 var domify = require('domify');
 var localLinks = require('local-links');
-//var templates = require('../templates');
 var templates = require('../../templates/body.hbs');
 var headTemplate = require('../../templates/head.jade');
-
 var bsn = require('bootstrap.native');
 
 require('../../stylesheets/app.styl');
-//require('../../stylesheets/bootstrap.css');
+require('bootstrap-webpack!../../bootstrap.config.js');
 require('../../stylesheets/d3.css');
 
 module.exports = View.extend({

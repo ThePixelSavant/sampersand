@@ -1,7 +1,7 @@
 var app = require('ampersand-app');
 var Router = require('ampersand-router');
 var HomePage = require('./pages/home');
-var ContactPage = require('./pages/contact');
+//var ContactPage = require('./pages/contact');
 //var CollectionDemo = require('./pages/collection-demo');
 //var InfoPage = require('./pages/info');
 //var d3Page = require('./pages/d3');
@@ -12,8 +12,8 @@ var ContactPage = require('./pages/contact');
 module.exports = Router.extend({
     routes: {
         '': 'home',
-        'contact': 'contact',
-        /*'collections': 'collectionDemo',
+        /*'contact': 'contact',
+        'collections': 'collectionDemo',
         'info': 'info',
         'd3': 'd3',
         'person/add': 'personAdd',
@@ -25,15 +25,15 @@ module.exports = Router.extend({
     // ------- ROUTE HANDLERS ---------
     home: function () {
         app.trigger('page', new HomePage({
-            model: app.portfolio
-        }));
-    },
-    
-    contact: function () {
-        app.trigger('page', new ContactPage({
             //model: app.portfolio
         }));
     },
+    
+    /*contact: function () {
+        app.trigger('page', new ContactPage({
+            //model: app.portfolio
+        }));
+    },*/
 
     /*collectionDemo: function () {
         app.trigger('page', new CollectionDemo({

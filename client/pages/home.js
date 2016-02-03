@@ -1,18 +1,41 @@
 var PageView = require('./base');
+var CollectionRenderer = require('ampersand-collection');
 var templates = require('../../templates/pages/portfolio.hbs');
-var portfolioCollection = require('../views/portfolioCollection');
+var portfolioResource = require('../resources/portfolioResource');
+var portfolioItems = require('../views/portfolioItems');
+var PortfolioModel = require('../models/PortfolioModel');
+var PortfolioData = require('../fixtures/PortfolioData');
+var portfolioItems = require('../views/portfolioItems');
 
 module.exports = PageView.extend({
     pageTitle: 'home',
-    template: templates/*,
+    template: templates,
     subviews: {
         portfolioTiles: {
-            container: 'tileWrapper',
+            hook: 'tileWrapper',
             prepareView: function (el) {
-                el: el,
-                model: this.model
+                
+                var collectionModel = new portfolioResource(PortfolioData);
+                
+                return new portfolioItems({
+                    el: el,
+                    parent: this,
+                    collection: collectionModel
+                });
+
+                /*
+                //console.log(collection);
+                
+                var view = new portfolioItems({
+					el: el,
+					parent: this,
+					collection: collection
+				});
+
+				return view;*/
+                
             }
         }
         
-    }*/
+    }
 });

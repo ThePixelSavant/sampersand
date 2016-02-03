@@ -6,8 +6,6 @@ var MainView = require('./views/main');
 //var Me = require('./models/me');
 //var People = require('./models/persons');
 var domReady = require('domready');
-var Portfolio = require('./models/PortfolioModel');
-var Portfolio = require('./models/PortfolioModel');
 
 // attach our app to `window` so we can
 // easily access it from the console.
@@ -15,15 +13,11 @@ window.app = app;
 
 // Extends our main app singleton
 app.extend({
-    //me: new Me(),
-    //people: new People(),
-    portfolio: new Portfolio('./fixtures/PortfolioData'),
     router: new Router(),
     // This is where it all starts
     init: function() {
         // Create and attach our main view
         this.mainView = new MainView({
-            model: this.portfolio,
             el: document.body
         });
 
