@@ -7,6 +7,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "public/"),
         filename: "index.js",
+        contentBase: '/public',
         publicPath: 'public/'
     },
     clearBeforeBuild: true,

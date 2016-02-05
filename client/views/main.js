@@ -11,6 +11,8 @@ var localLinks = require('local-links');
 var templates = require('../../templates/body.hbs');
 var headTemplate = require('../../templates/head.hbs');
 var bsn = require('bootstrap.native');
+var messageMe = require('../forms/messageMe');
+var modalTemplate = require('../../templates/modalContent.hbs');
 
 require('../../stylesheets/app.styl');
 require('bootstrap-webpack!../../bootstrap.config.js');
@@ -29,8 +31,10 @@ module.exports = View.extend({
     },
     render: function () {
         // some additional stuff we want to add to the document head
-                
+
         document.head.appendChild(domify(headTemplate()));
+        
+        console.log(this.messageMe);
 
         // main renderer
         this.renderWithTemplate(this);
@@ -73,7 +77,7 @@ module.exports = View.extend({
         // event was from clicking an internal link. That we should
         // treat like local navigation.
         var localPath = localLinks.pathname(e);
-        
+
         if (localPath) {
             e.preventDefault();
             app.navigate(localPath);
@@ -93,25 +97,18 @@ module.exports = View.extend({
             }
         });
     },
-  
-    messageMe: function() {
-      var modalFrame = this.el.querySelector('#myModal');
-      //console.log(this.el.find('#myModal'));
-      //template content for modal example 2, should work for the third button as well
-      return new bsn.Modal(modalFrame, {
-      content: 
-          '<div class="modal-header">'
-          +'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
-          +'<h4 class="modal-title" id="gridModalLabel">Modal title</h4>'
-          +'</div>'
-          +'<div class="modal-body">'
-          +'<p>This is where you fill up content you know, etc.</p>'
-          +'</div>'
-          +'<div class="modal-footer">'
-          +'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'
-          +'<button type="button" class="btn btn-primary">Save changes</button>'
-          +'</div>'
-      });
+
+    messageMe: function (e) {
+        /*e.preventDefault();
+        var modalFrame = this.el.querySelector('#myModal');
+        var MessageForm = new messageMe(
+            //template: modalTemplate
+        );
+        var modalContent = MessageForm.render();
+        console.log(MessageForm);
+        return new bsn.Modal(modalFrame, {
+            content: modalContent
+        });*/
     }
-  
+
 });
