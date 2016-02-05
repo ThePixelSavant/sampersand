@@ -9,7 +9,7 @@ var _ = require('lodash');
 var domify = require('domify');
 var localLinks = require('local-links');
 var templates = require('../../templates/body.hbs');
-var headTemplate = require('../../templates/head.jade');
+var headTemplate = require('../../templates/head.hbs');
 var bsn = require('bootstrap.native');
 
 require('../../stylesheets/app.styl');
@@ -24,7 +24,8 @@ module.exports = View.extend({
         this.listenTo(app, 'page', this.handleNewPage);
     },
     events: {
-        'click a[href]': 'handleLinkClick'
+        'click a[href]': 'handleLinkClick',
+        'click [data-hook="message-me"]': 'messageMe'
     },
     render: function () {
         // some additional stuff we want to add to the document head
@@ -91,5 +92,26 @@ module.exports = View.extend({
                 dom.removeClass(aTag.parentNode, 'active');
             }
         });
+    },
+  
+    messageMe: function() {
+      var modalFrame = this.el.querySelector('#myModal');
+      //console.log(this.el.find('#myModal'));
+      //template content for modal example 2, should work for the third button as well
+      return new bsn.Modal(modalFrame, {
+      content: 
+          '<div class="modal-header">'
+          +'<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>'
+          +'<h4 class="modal-title" id="gridModalLabel">Modal title</h4>'
+          +'</div>'
+          +'<div class="modal-body">'
+          +'<p>This is where you fill up content you know, etc.</p>'
+          +'</div>'
+          +'<div class="modal-footer">'
+          +'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'
+          +'<button type="button" class="btn btn-primary">Save changes</button>'
+          +'</div>'
+      });
     }
+  
 });

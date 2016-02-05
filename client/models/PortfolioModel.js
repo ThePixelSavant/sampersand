@@ -7,8 +7,8 @@ module.exports = AmpModel.extend({
         id: ['number'],
         title:['string'],
         content:['string'],
-        dateStart:['date'],
-        dateEnd:['date'],
+        dateStart:['string'],
+        dateEnd:['string'],
         coolnessFactor:['number']
     }
 });

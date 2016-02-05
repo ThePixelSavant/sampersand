@@ -22,17 +22,6 @@ module.exports = PageView.extend({
                     parent: this,
                     collection: collectionModel
                 });
-
-                /*
-                //console.log(collection);
-                
-                var view = new portfolioItems({
-					el: el,
-					parent: this,
-					collection: collection
-				});
-
-				return view;*/
                 
             }
         }
