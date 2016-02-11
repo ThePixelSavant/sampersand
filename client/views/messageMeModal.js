@@ -1,5 +1,5 @@
 var View = require('ampersand-view');
-var templates = require('../../templates/messageMe.hbs');
+var templates = require('../../templates/partials/messageMe.hbs');
 var messageMeForm = require('../forms/messageMe');
 
 

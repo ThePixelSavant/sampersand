@@ -1,10 +1,10 @@
 var PageView = require('./base');
 var CollectionRenderer = require('ampersand-collection');
-var templates = require('../../templates/pages/portfolio.hbs');
-var portfolioResource = require('../resources/portfolioResource');
+var templates = require('../../templates/pages/home.hbs');
+var pageResource = require('../resources/pageResource');
+var carousel = require('../views/carousel');
 var portfolioItems = require('../views/portfolioItems');
-var PortfolioModel = require('../models/PortfolioModel');
-var PortfolioData = require('../fixtures/PortfolioData');
+var PageData = require('../fixtures/PageData');
 var portfolioItems = require('../views/portfolioItems');
 
 module.exports = PageView.extend({
@@ -15,12 +15,22 @@ module.exports = PageView.extend({
             hook: 'tileWrapper',
             prepareView: function (el) {
                 
-                var collectionModel = new portfolioResource(PortfolioData);
+                var collectionModel = new pageResource(PageData);
                 
                 return new portfolioItems({
                     el: el,
                     parent: this,
                     collection: collectionModel
+                });
+                
+            }
+        },
+        carousel: {
+            hook: 'carousel-wrapper',
+            prepareView: function (el) {
+                return new carousel({
+                    el: el,
+                    parent: this
                 });
                 
             }

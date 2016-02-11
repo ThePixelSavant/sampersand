@@ -1,5 +1,5 @@
 var View = require('ampersand-view');
-var template = require('../../templates/portfolioTile.hbs');
+var template = require('../../templates/partials/portfolioTile.hbs');
 
 module.exports = View.extend({
     template: template,

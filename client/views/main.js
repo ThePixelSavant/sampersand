@@ -9,11 +9,11 @@ var ModalView = require('ampersand-modal-view');
 var _ = require('lodash');
 var domify = require('domify');
 var localLinks = require('local-links');
-var templates = require('../../templates/body.hbs');
-var headTemplate = require('../../templates/head.hbs');
+var templates = require('../../templates/partials/body.hbs');
+var headTemplate = require('../../templates/partials/head.hbs');
 var bsn = require('bootstrap.native');
 var messageMe = require('./messageMeModal');
-var modalTemplate = require('../../templates/modalContent.hbs');
+var modalTemplate = require('../../templates/partials/modalBase.hbs');
 
 //require('bootstrap-webpack!../../bootstrap.config.js');
 require('../../stylesheets/app.styl');

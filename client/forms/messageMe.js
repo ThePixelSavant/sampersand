@@ -1,6 +1,6 @@
 var FormView = require('ampersand-form-view');
 var InputView = require('ampersand-input-view');
-var inputTemplate = require('../../templates/formInput.hbs');
+var inputTemplate = require('../../templates/forms/formInput.hbs');
 
 module.exports = FormView.extend({
     autoRender: true,
