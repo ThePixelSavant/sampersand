@@ -3,11 +3,13 @@ var path = require('path'),
 
 
 module.exports = {
-    entry: './client/app.js', 
+    entry: [
+        'bootstrap-webpack!./bootstrap.config.js',
+        './client/app.js' 
+    ],
     output: {
         path: path.resolve(__dirname, "public/"),
         filename: "index.js",
-        contentBase: '/public',
         publicPath: 'public/'
     },
     clearBeforeBuild: true,
@@ -22,7 +24,7 @@ module.exports = {
                 loader: 'style-loader!css-loader'
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
+                test: /\.(jpe?g|png|gif)$/i,
                 loaders: [
                     'url-loader?&name=[path][name].[ext]&limit=100000',
                     'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
@@ -38,19 +40,19 @@ module.exports = {
             },
             {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff'
+                loader: 'url-loader'
             },
             {
                 test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/octet-stream'
+                loader: 'url-loader'
             },
             {
                 test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file'
+                loader: 'file-loader'
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=image/svg+xml'
+                loader: 'url-loader'
             }
         ]
     }

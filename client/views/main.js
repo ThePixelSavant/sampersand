@@ -5,18 +5,18 @@ var setFavicon = require('favicon-setter');
 var View = require('ampersand-view');
 var dom = require('ampersand-dom');
 var ViewSwitcher = require('ampersand-view-switcher');
+var ModalView = require('ampersand-modal-view');
 var _ = require('lodash');
 var domify = require('domify');
 var localLinks = require('local-links');
 var templates = require('../../templates/body.hbs');
 var headTemplate = require('../../templates/head.hbs');
 var bsn = require('bootstrap.native');
-var messageMe = require('../forms/messageMe');
+var messageMe = require('./messageMeModal');
 var modalTemplate = require('../../templates/modalContent.hbs');
 
+//require('bootstrap-webpack!../../bootstrap.config.js');
 require('../../stylesheets/app.styl');
-require('bootstrap-webpack!../../bootstrap.config.js');
-require('../../stylesheets/d3.css');
 
 module.exports = View.extend({
     template: templates,
@@ -24,17 +24,16 @@ module.exports = View.extend({
     initialize: function () {
         // this marks the correct nav item selected
         this.listenTo(app, 'page', this.handleNewPage);
+        //this.on('messageMe', this.messageMe, this);
     },
     events: {
         'click a[href]': 'handleLinkClick',
-        'click [data-hook="message-me"]': 'messageMe'
+        'click [data-hook="message-me-modal"]': 'messageMe'
     },
     render: function () {
         // some additional stuff we want to add to the document head
 
         document.head.appendChild(domify(headTemplate()));
-        
-        console.log(this.messageMe);
 
         // main renderer
         this.renderWithTemplate(this);
@@ -99,16 +98,41 @@ module.exports = View.extend({
     },
 
     messageMe: function (e) {
-        /*e.preventDefault();
-        var modalFrame = this.el.querySelector('#myModal');
-        var MessageForm = new messageMe(
-            //template: modalTemplate
-        );
-        var modalContent = MessageForm.render();
-        console.log(MessageForm);
-        return new bsn.Modal(modalFrame, {
-            content: modalContent
+        e.preventDefault();
+        var MessageForm = new messageMe();
+
+        this._modal = new ModalView({
+            title: 'Message Me',
+            description: 'trying to get a form loading here',
+            template: modalTemplate,
+            contentView: MessageForm,
+            parent: this
+        });
+        
+        //console.log(this._modal);
+        
+        /*return new bsn.Modal(modalFrame, {
+            content: modalContent.el.innerHTML
         });*/
+        
+        function timerIn(el) {
+            el.classList.add('in');
+            //console.log(el);
+            return el;
+        }
+
+        this._modal.openIn(
+            'body',
+            function(){
+                console.log(this.style);
+                this.style.display = 'block';
+                setTimeout(timerIn(this), 10000);
+                //setTimeout(this.style.display = 'block', 1000);
+            }
+        );
+    },
+    _animate: function(el){
+        
     }
 
 });
