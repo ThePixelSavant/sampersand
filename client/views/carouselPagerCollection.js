@@ -1,6 +1,6 @@
 var Collection = require('ampersand-collection-view');
-var portfolioTile = require('./portfolioTileView');
+var carouselPagerItem = require('./carouselPagerItem');
 
 module.exports = Collection.extend({
-	view: portfolioTile
+	view: carouselPagerItem
 });

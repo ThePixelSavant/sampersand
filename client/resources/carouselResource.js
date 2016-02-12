@@ -1,6 +1,6 @@
 var Collection = require('ampersand-collection');
-var pageModel = require('../models/PageModel')
+var carouselModel = require('../models/carouselModel')
 
 module.exports = Collection.extend({
-	model: pageModel
+	model: carouselModel
 });

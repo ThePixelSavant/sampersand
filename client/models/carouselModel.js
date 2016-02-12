@@ -7,6 +7,6 @@ module.exports = AmpModel.extend({
         content:['string'],
         dateStart:['string'],
         dateEnd:['string'],
-        coolnessFactor:['number']
+        active: ["boolean", false, false]
     }
 });

@@ -1,40 +1,42 @@
 var PageView = require('./base');
 var CollectionRenderer = require('ampersand-collection');
 var templates = require('../../templates/pages/home.hbs');
-var pageResource = require('../resources/pageResource');
-var carousel = require('../views/carousel');
-var portfolioItems = require('../views/portfolioItems');
-var PageData = require('../fixtures/PageData');
-var portfolioItems = require('../views/portfolioItems');
+var carouselView= require('../views/carousel');
+var bsn = require("bootstrap.native");
 
 module.exports = PageView.extend({
     pageTitle: 'home',
     template: templates,
+    initialize: function (opts) {
+        PageView.prototype.initialize.apply(this, arguments);
+        //bsn.Carousel('.carousel');
+        //console.log(bsn.Carousel());
+	},
+    /*initialize: {
+        //bsn.Carousel('.carousel').Carousel();
+        console.log(this);
+    },*/
     subviews: {
-        portfolioTiles: {
-            hook: 'tileWrapper',
-            prepareView: function (el) {
-                
-                var collectionModel = new pageResource(PageData);
-                
-                return new portfolioItems({
-                    el: el,
-                    parent: this,
-                    collection: collectionModel
-                });
-                
-            }
-        },
         carousel: {
             hook: 'carousel-wrapper',
             prepareView: function (el) {
-                return new carousel({
+                return new carouselView({
                     el: el,
                     parent: this
                 });
-                
+                //console.log(this);
+                //var carouselView new carousel().render;
             }
         }
-        
-    }
+    }/*,
+    events: {
+        'slid.bs.carousel [data-hook="splash-carousel"]': 'removeSlide',
+        'slide.bs.carousel [data-hook="splash-carousel"]': 'addSlide'
+    },
+    removeSlide: function(e) {
+        console.log(e);
+    },
+    addSlide: function(e) {
+        console.log(e);
+    }*/
 });
