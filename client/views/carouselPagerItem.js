@@ -3,6 +3,7 @@ var template = require('../../templates/bootstrap/carouselPagerItem.hbs');
 
 module.exports = View.extend({
     template: template,
+    autoRender: true,
     bindings: {
         'model.id': {
             type: 'attribute',

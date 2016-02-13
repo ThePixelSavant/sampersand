@@ -83,3 +83,5 @@ gulp.task("webpack-dev-server", function (callback) {
 
     });
 });
+
+module.exports = gulp;

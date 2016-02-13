@@ -3,6 +3,7 @@ var template = require('../../templates/bootstrap/carouselItem.hbs');
 
 module.exports = View.extend({
     template: template,
+    autoRender: true,
     bindings: {
         'model.content': {
             type: 'attribute',

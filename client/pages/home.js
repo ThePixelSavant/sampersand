@@ -1,7 +1,6 @@
 var PageView = require('./base');
-var CollectionRenderer = require('ampersand-collection');
 var templates = require('../../templates/pages/home.hbs');
-var carouselView= require('../views/carousel');
+var carouselView = require('../views/carousel');
 var bsn = require("bootstrap.native");
 
 module.exports = PageView.extend({
@@ -12,10 +11,6 @@ module.exports = PageView.extend({
         //bsn.Carousel('.carousel');
         //console.log(bsn.Carousel());
 	},
-    /*initialize: {
-        //bsn.Carousel('.carousel').Carousel();
-        console.log(this);
-    },*/
     subviews: {
         carousel: {
             hook: 'carousel-wrapper',
@@ -24,8 +19,6 @@ module.exports = PageView.extend({
                     el: el,
                     parent: this
                 });
-                //console.log(this);
-                //var carouselView new carousel().render;
             }
         }
     }/*,
@@ -34,9 +27,9 @@ module.exports = PageView.extend({
         'slide.bs.carousel [data-hook="splash-carousel"]': 'addSlide'
     },
     removeSlide: function(e) {
-        console.log(e);
+        console.log( 'The #' + e.target.id + ' is about to slide, and this was the "slid" event' );
     },
     addSlide: function(e) {
-        console.log(e);
+        console.log( 'The #' + e.target.id + ' has finished the slide transition, and this was the "slide" event' );
     }*/
 });
