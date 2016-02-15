@@ -4,7 +4,7 @@ var carouselResource = require('../resources/carouselResource');
 var carouselItems = require('./carouselCollection');
 var carouselPagerCollection = require('./carouselPagerCollection');
 var carouselData = require('../fixtures/carouselData');
-
+var bsn = require("bootstrap.native");
 var collectionModel = new carouselResource(carouselData);
 
 module.exports = View.extend({
@@ -32,5 +32,15 @@ module.exports = View.extend({
                 
             }
         }
+    },
+    /*events: {
+        'slid.bs.carousel [data-hook="splash-carousel"]': 'removeSlide',
+        'slide.bs.carousel [data-hook="splash-carousel"]': 'addSlide'
+    },*/
+    removeSlide: function(e) {
+        console.log( 'The #' + e.target.id + ' is about to slide, and this was the "slid" event' );
+    },
+    addSlide: function(e) {
+        console.log( 'The #' + e.target.id + ' has finished the slide transition, and this was the "slide" event' );
     }
 });

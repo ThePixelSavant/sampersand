@@ -1,35 +1,39 @@
 var PageView = require('./base');
 var templates = require('../../templates/pages/home.hbs');
-var carouselView = require('../views/carousel');
-var bsn = require("bootstrap.native");
+var splashMain = require('../views/carousel');
+var splashText = require('../views/splashText');
+var homeTabs = require('../views/homeTabs');
 
 module.exports = PageView.extend({
     pageTitle: 'home',
     template: templates,
-    initialize: function (opts) {
-        PageView.prototype.initialize.apply(this, arguments);
-        //bsn.Carousel('.carousel');
-        //console.log(bsn.Carousel());
-	},
     subviews: {
-        carousel: {
-            hook: 'carousel-wrapper',
+        splashMain: {
+            hook: 'splash-main',
             prepareView: function (el) {
-                return new carouselView({
+                return new splashMain({
+                    el: el,
+                    parent: this
+                });
+            }
+        },
+        splashText: {
+            hook: 'splash-sub',
+            prepareView: function (el) {
+                return new splashText({
+                    el: el,
+                    parent: this
+                });
+            }
+        },
+        homeTabs: {
+            hook: 'home-tabs',
+            prepareView: function (el) {
+                return new homeTabs({
                     el: el,
                     parent: this
                 });
             }
         }
-    }/*,
-    events: {
-        'slid.bs.carousel [data-hook="splash-carousel"]': 'removeSlide',
-        'slide.bs.carousel [data-hook="splash-carousel"]': 'addSlide'
-    },
-    removeSlide: function(e) {
-        console.log( 'The #' + e.target.id + ' is about to slide, and this was the "slid" event' );
-    },
-    addSlide: function(e) {
-        console.log( 'The #' + e.target.id + ' has finished the slide transition, and this was the "slide" event' );
-    }*/
+    }
 });
