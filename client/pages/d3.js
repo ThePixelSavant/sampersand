@@ -1,10 +1,10 @@
 var PageView = require('./base');
-var templates = require('../templates');
+var templates = require('../../templates/pages/d3.jade');
 var d3 = require('d3');
 
 module.exports = PageView.extend({
     pageTitle: 'D3 Sample',
-    template: templates.pages.d3,
+    template: templates,
     render: function () {
         PageView.prototype.render.apply(this, arguments);
         this.InitChart();
